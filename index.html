@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="baidu-site-verification" content="code-47W064y9OA" />
+    <meta name="google-site-verification" content="ZpFUNCZeahHVij6m_IJwEYWVcJUw0TpGKBv_riJRPu4" />
+    <title>十三杀卡面设计器（初版</title>
+    <link rel="stylesheet" type="text/css" href="index.css">
+    <link rel="shortcut icon" type="image/x-icon" href="resources/icon.png">
+    <script type="text/javascript" src="./jquery-3.6.0.min.js"></script>
+</head>
+<body>
+<nav id="global_nav">
+  <ul id="nav_ul">
+    <li><a class="barText" href="#" id="AppName">十三杀卡面设计器（初版）</a></li>
+    <li><a class="barText" href="https://lyciumaker.com/" target="_blank">（基于此设计器改编）</a></li>
+  </ul>
+</nav>
+
+<div id="cardAndEditor">
+
+<canvas id="card_preview">
+</canvas>
+
+<div id="editor">
+    <div class="block">
+        <div class="verticalBlock">
+            <button id="download_card">将卡牌下载到本地</button>
+        </div>
+    </div>
+    <div id="illustration_scaling" class="block">
+        <div class="verticalBlock">
+            <div class="description  leftDescription">导入插画</div>
+            <input type="file" class="function_button" id="import_illustration" accept="image/jpeg, image/png"></button>
+        </div>
+        <div class="verticalBlock">
+            <div class="description  leftDescription">插画缩放</div>
+            <input type="number" id="scale_number" onfocus="this.select()" value="100">
+            <div class="description">%</div>
+            <button id="zoom_out">-25%</button>
+            <button id="zoom_in">+25%</button>
+            <button id="reset_scale">重置</button>
+        </div>
+        <div class="verticalBlock">
+            <div class="tip">拖拽图片可改变插画位置</div>
+        </div>
+    </div>
+    <div class="block">
+        <input type="checkbox" id="translateBox" checked="checked" value="first_checkbox">
+        <label class="description" for="translateBox">自动简繁转换</label>
+        <div class="tip" id="s2ttip">由于简体繁体并非一一对应，自动简繁转换可能会出现错误，如有错误建议关闭此选项并使用繁体输入</div>
+    </div>
+    <div class="block">
+        <div class="verticalBlock">
+            <div class="leftDescription">
+                <input type="checkbox" id="isProducer" value="first_checkbox">
+                <label class="description" for="isProducer">版权</label>
+            </div>
+            <input id="producer" class="nearDes" style="display: none" type="text" onfocus="this.select()" value="2022 未知作者">
+        </div>
+        <div class="verticalBlock">
+            <div class="leftDescription">
+                <input type="checkbox" id="isCardNumber" value="first_checkbox">
+                <label class="description" for="isCardNumber">编号</label>
+            </div>
+            <input id="cardNumber" class="nearDes" style="display: none" type="text" onfocus="this.select()" value="DIY 001">
+        </div>
+    </div>
+    <div class="block">
+        <div class="verticalBlock">
+            <div class="description  leftDescription">武将称号</div>
+            <input id="hero_title" class="nearDes" type="text" onfocus="this.select()" value="示例人物">
+            <div class="tip traditional_please" style="display: none">请输入繁体</div>
+        </div>
+    </div>
+    <div class="block">
+        <div class="verticalBlock">
+            <div  class="description  leftDescription">武将名</div>
+            <input id="hero_name" type="text" onfocus="this.select()" value="梁子恒">
+            <div class="tip traditional_please" style="display: none">请输入繁体</div>
+        </div>
+    </div>
+    <div class="block">
+        <div class="verticalBlock">
+            <div class="description  leftDescription">势力</div>
+            <select id="power_select">
+                <option value ="chuan">川</option>
+                <option value ="yu">豫</option>
+                <option value="hua">滑</option>
+                <option value="qun" selected="selected">群</option>
+                <option value="shi">师</option>
+            </select>
+        </div>
+        <div class="verticalBlock">
+            <div class="leftDescription">
+                <input type="checkbox" id="myLord" value="first_checkbox">
+                <label class="description" for="myLord">主公</label>
+            </div>
+        </div>
+    </div>
+    <div class="block">
+        <div class="verticalBlock">
+            <div class="description leftDescription">体力值</div>
+            <input id="heart" type="number" value="4" onfocus="this.select()">
+        </div>
+        <div class="verticalBlock">
+            <input type="checkbox" id="isHeartLimit" value="first_checkbox">
+            <label class="description" for="isHeartLimit">体力值与体力上限不等</label>
+        </div>
+        <div class="verticalBlock" id="heartLimitVBlock" style="display: none">
+            <div class="description leftDescription">体力上限</div>
+            <input id="heart_limit" type="number" value="4" onfocus="this.select()">
+        </div>
+    </div>
+    <div class="block">
+        <div class="verticalBlock">
+            <div class="description leftDescription">技能数量</div>
+            <input id="skill_number" type="number" value="2" onfocus="this.select()">
+        </div>
+    </div>
+    <div id="sk1Block" class="block">
+        <div class="verticalBlock">
+        <div class="description leftDescription">技能1</div>
+            <input type="checkbox" id="isItalic1" value="first_checkbox">
+            <label class="description description2" for="isItalic1">斜体</label>
+        </div>
+        <div class="verticalBlock">
+            <div class="description leftDescription">技能名</div>
+            <input id="sk1n" type="text" onfocus="this.select()" value="例1">
+            <div class="tip traditional_please" style="display: none">请输入繁体</div>
+        </div>
+        <div class="verticalBlock">
+        <div class="description leftDescription">技能描述</div>
+            <textarea rows="4" id="sk1" onfocus="this.select()">这是一个示例这是一个示例这是一个示例这是一个示例这是一个示例这是一个示例</textarea>
+        </div>
+    </div>
+    <div id="sk2Block"class="block">
+        <div class="verticalBlock">
+        <div class="description leftDescription">技能2</div>
+            <input type="checkbox" id="isItalic2" value="first_checkbox">
+            <label class="description description2" for="isItalic2">斜体</label>
+        </div>
+        <div class="verticalBlock">
+            <div class="description leftDescription">技能名</div>
+            <input id="sk2n" type="text" onfocus="this.select()" value="示例示例">
+            <div class="tip traditional_please" style="display: none">请输入繁体</div>
+        </div>
+        <div class="verticalBlock">
+            <div class="description leftDescription">技能描述</div>
+            <textarea rows="4" id="sk2" onfocus="this.select()">主公技，这是一个示例</textarea>
+        </div>
+    </div>
+</div>
+</div>
+</body>
+    <script type="module" src="./index.js"></script>
+</html>
