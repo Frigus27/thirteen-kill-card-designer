@@ -163,7 +163,16 @@ class Skill{
 downloadCardButton.onclick = downloadCard;
 
 function downloadCard(){
-    alert('test');
+    canvas.toBlob((blob) => {
+        const timestamp = Date.now().toString();
+        const a = document.createElement('a');
+        document.body.append(a);
+        a.download = `${timestamp}.png`;
+        a.href = URL.createObjectURL(blob);
+        a.click();
+        a.remove();
+    });
+    // alert('test');
     /*
     function download(){
         const downloadLink = document.createElement('a');
