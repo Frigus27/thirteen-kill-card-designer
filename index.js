@@ -1039,8 +1039,8 @@ function drawVersionInformation(ctx){
     ctx.textAlign = 'left';
     ctx.font = "8px FangZhengZhunYuan";
     ctx.fillStyle = "rgba(255, 255, 255, 0.3)";
-    const info = "" + document.getElementById("AppName").innerText;
-    ctx.fillText(info, drawX, drawY);
+    //const info = "" + document.getElementById("AppName").innerText;
+    //ctx.fillText(info, drawX, drawY);
 }
 
 let oldmsg = "";
