@@ -30,7 +30,6 @@ const s2ttip = document.getElementById("s2ttip");
 
 const isProducerButton = document.getElementById("isProducer");
 let isProducer = false; // 是否绘制制作商
-const isIllustratorButton = document.getElementById("isIllustrator");
 let isIllustrator = false; // 是否绘制画师
 const isCardNumberButton = document.getElementById("isCardNumber");
 let isCardNumber = false; // 是否绘制编号
@@ -309,11 +308,6 @@ isProducerButton.onchange = function(){
     switchDisplay(isProducer, document.getElementById("producer"));
 }
 
-// 按钮事件：是否显示画师
-isIllustratorButton.onchange = function(){
-    isIllustrator = isIllustratorButton.checked;
-    switchDisplay(isIllustrator, document.getElementById("illustrator"));
-}
 
 // 按钮事件：是否显示编号
 isCardNumberButton.onchange = function(){
