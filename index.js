@@ -981,7 +981,7 @@ function drawSkill(ctx, skills){
                 console.error("不存在势力\"" + power + "\"对应的技能名外框！");
             }
 
-            if(power === "神"){
+            if(power === "shi"){
                 ctx.fillStyle = "rgb(239, 227, 111)"
             }else{
                 ctx.fillStyle = "rgb(0, 0, 0)"
